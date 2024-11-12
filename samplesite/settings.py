@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from tempfile import template
 
+import rest_framework.authentication
 from django.contrib.messages.context_processors import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -314,7 +315,11 @@ REST_FRAMEWORK = {
         # 'rest_framework.permissions.IsAdminUser',
         # 'rest_framework.permissions.DjangoModelPermissions',
         # 'rest_framework.permissions.DjangoModelPermissionOrAnonReadOnly'
-    )
+    ),
+    'DEFAULT_AUTHENTICATED_CLASES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
 # from django.contrib.auth import get_user_model
 # user = get_user_model().objects.get(is_superuser=True)
